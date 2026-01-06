@@ -3,10 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test RevoU Bootcamp</title>
+
 </head>
 <body>
-    <h1>Hello World!!</h1>
-    <h2>ini ogi</h2>
+    <p style="color: red;">Hello World!!!</p>
+    <p>Halo nama saya <br> ...</p>
+    <!-- komentar pake ctrl+/ -->
+     <h1>Ini heading 1</h1>
+     <h2>Ini heading 2</h2>
+     <h3>Ini heading 3</h3>
+     <h4>Ini heading 4</h4>
+     <h5>Ini heading 5</h5>
+     <h6>Ini heading 6</h6>
+     <p>Ini <b>bold</b>, ini <i>italic</i>, ini <sub>bawah</sub>, ini <sup>atas</sup></p>
+
+     <h1>bullet point</h1>
+    <!-- unordered list -->
+     <ul type="square"> 
+        <li>Pisang <p>pisang adalah buah berwarna kuning</p></li>
+        <li>Apel</li>
+        <li>Mangga</li>
+        <li>Jeruk</li>
+    </ul>
+
+    <h1>Urutan angka</h1>
+    <!-- ordered list -->
+     <ol type="I"> 
+        <li>Buka vscode</li>
+        <li>Open folder project yang akan dikerjakan</li>
+        <li>buat file indeks html</li>
+        <li>isi file index.html dengan html:5</li>
+        <li>Jalankan dengan live preview dari Microsoft</li>
+     </ol>
+
+     <h1>tabel</h1>
+     <table border="1">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+           
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alfred</td>
+                <td>alfred@gmail.com</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Budi</td>
+                <td>budi@gmail.com</td>
+                <td>Indonesia</td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td>charlie@gmail.com</td>
+                <td>USA</td>
+            </tr>
+        </tbody>
+     </table>
+        
+
+     <h1>gambar</h1>
+     <img src="./revou.png" alt="revou" width="300">
+     <img src="https://fastly.picsum.photos/id/180/2400/1600.jpg?hmac=Ig-CXcpNdmh51k3kXpNqNqcDYTwXCIaonYiBOnLXBb8" alt="random img" width="450">
+        
+     <h1>Link</h1>
+     <p>Ini adalah link ke <a href="https://revou.co" target="_blank">RevoU</a></p>
+     <p>go to <a href="#lorem">lorem</a></p>
+
+     <h1>Form Contact Us</h1>
+     <form>
+        <label>Nama</label>
+        <input type="text" placeholder="Tulis nama anda">
+        <br>
+        <label>Umur</label>
+        <input type="number" min="0" max="100" placeholder="19">
+        <br>
+        <label>Password</label>
+        <input type="password">
+        <br>
+        <label>Jenis Kelamin</label>
+        <input type="radio" value="male" name="jenis-kelamin">laki-laki
+        <input type="radio" value="female" name="jenis-kelamin">perempuan
+        <br>
+
+        <label>Makanan favorit</label>
+        <select>
+            <option value="nasi-goreng">Nasi Goreng</option>
+            <option value="soto">Soto</option>
+            <option value="sate">Sate</option>
+            <option value="bakso">Bakso</option>
+            <option value="mi-ayam">Mi Ayam</option>
+        </select>
+
+        <br>
+        <label>Comment</label>
+        <br>
+        <textarea rows="5" cols="30" placeholder="Tulis komentar disini..."></textarea>
+        <br>
+        <input type="checkbox"> Saya setuju dengan syarat dan ketentuan
+        <br>
+        <input type="submit" value="kirim">
+        <button type="submit">send</button>
+     </form>
+
+     <p id="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et, voluptatibus, aut eligendi, delectus corporis explicabo ipsa doloribus praesentium illum quis eum odio. Repellendus tempore voluptates magni asperiores sapiente facilis!</p>
 </body>
 </html>
