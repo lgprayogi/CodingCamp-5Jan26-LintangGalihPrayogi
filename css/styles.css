@@ -1,0 +1,23 @@
+
+#mainTitle {
+    font-size: x-large;
+}
+
+body{
+    height: 100vh;
+    align-content: center;
+    justify-content: center;
+    background-color: #3164ee;
+    
+}
+
+main{
+    justify-self: anchor-center;
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+header {
+    justify-self: anchor-center;
+}
