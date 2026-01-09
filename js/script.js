@@ -1,4 +1,5 @@
 let todos = [];
+let currentFilter = "all";
 
 function addTodo() {
     const todoInput = document.getElementById('todoInput');
@@ -9,10 +10,11 @@ function addTodo() {
         return;
     }
 
-    const newTodo = {
-        task: todoInput.value,
-        date: todoDate.value
-    };
+    const newTodo = ({
+        task: todoInput.value.trim(),
+        date: todoDate.value,
+        completed: false
+    });
 
     todos.push(newTodo);
     renderTodos();
@@ -28,53 +30,72 @@ function renderTodos(list) {
     todoList.innerHTML = '';
 
     if (data.length === 0) {
-        todoList.innerHTML = '<li>No todos available</li>';
-        return;
-    }
-
-    data.forEach((todo) => {
-        const li = document.createElement('li');
-        li.innerHTML = `<p class="text-xl">${escapeHtml(todo.task)} <span class="text-sm text-gray-500">(${todo.date})</span></p><hr />`;
+        const li = document.createElement("li");
+        li.textContent = "No todos yet";
         todoList.appendChild(li);
+        return;
+}
+
+data.forEach((todo, index) => {
+    const li = document.createElement("li");
+    li.className = "border p-2 rounded";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = todo.completed;
+    checkbox.className = "mr-2";
+
+    checkbox.addEventListener("change", () => {
+        todo.completed = checkbox.checked;
+        renderTodos(filteredTodos());
     });
+
+    const p = document.createElement("p");
+    p.className = "text-2xl inline";
+
+    const taskSpan = document.createElement("span");
+    taskSpan.textContent = todo.task;
+    taskSpan.className = todo.completed
+    ? "line-through text-gray-400"
+    : "";
+
+    const dateSpan = document.createElement("span");
+    dateSpan.textContent = ` (${todo.date})`;
+    dateSpan.className = "text-sm text-gray-500";
+
+    p.appendChild(taskSpan);
+    p.appendChild(dateSpan);
+
+    li.appendChild(checkbox);
+    li.appendChild(p);
+    li.appendChild(document.createElement("hr"));
+
+    todoList.appendChild(li);
+});
 }
 
-function removeAllTodo() {
-    todos = [];
-    renderTodos();
-}
-
-function toggleFilter() {
-    const menu = document.getElementById('filterOptions');
-    if (!menu) return;
-    menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
-}
-
-function useFilter(type) {
-    let sorted = [...todos];
-
-    if (type === 'nameAsc') {
-        sorted.sort((a, b) => a.task.localeCompare(b.task));
+function filteredTodos() {
+    if (currentFilter === "completed") {
+        return todos.filter(todo => todo.completed);
     }
-    if (type === 'nameDesc') {
-        sorted.sort((a, b) => b.task.localeCompare(a.task));
-    }
-    if (type === 'dateOld') {
-        sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
-    }
-    if (type === 'dateNew') {
-        sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (currentFilter === "uncompleted") {
+        return todos.filter(todo => !todo.completed);
     }
 
-    renderTodos(sorted);
+    return todos;
 }
 
-// small helper to avoid inserting raw HTML from user input
-function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+const filterSelect = document.getElementById("filterStatus");
+filterSelect.addEventListener("change", (e) => {
+    currentFilter= e.target.value;
+    renderTodos(filteredTodos());
+});
+
+const removeAllTodo = document.getElementById("removeAllTodo");
+removeAllTodo.addEventListener('click', () => {
+    if (confirm('Delete all tasks?')) {
+        todos = [];
+        renderTodos(filteredTodos());
+    }
+})

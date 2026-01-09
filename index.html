@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="./css/styles.css">
 
     <!-- Tailwind -->
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <!-- Header Content -->
     <header>
-        <h1 id="mainTitle" class="text font-bold">Todo List Website - Lintang G Prayogi</h1>
+        <h1 id="mainTitle" class="text-white font-bold">Todo List Website - Lintang G Prayogi</h1>
     </header>
 
     <!-- main content -->
@@ -24,40 +24,39 @@
          <section>
             <form>
              <!-- todo input -->
-             <input class="border rounded p-2" type="text" id="todoInput" placeholder="Enter a new Todo...">
+             <input class="border rounded p-2 border-gray-600 text-white bg-gray-800" type="text" id="todoInput" placeholder="Enter a new Todo...">
              <!-- date input -->
-             <input class="border rounded p-2" type="date" id="todoDate" placeholder="Enter Due Date...">
+             <input class="border rounded p-2 border-gray-600 text-white bg-gray-800" type="date" id="todoDate" placeholder="Enter Due Date...">
+             <button onclick="addTodo()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded" type="button">+ Add Todo</button>
             </form>
 
-            <br>
-
-            <!-- button -->
-            <button onclick="addTodo()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">Add Todo</button>
         </section>
 
         <!-- action section -->
         <section class="flex pt-2 justify-between items-center">
 
-        <!-- clear all button -->
-        <button onclick="removeAllTodo()" class="border rounded p-2 bg-red-500 text-white font-bold">Clear All Todos</button>
-
-        <!-- filter -->
-        <button onclick="toggleFilter()" class="border rounded p-2 bg-blue-500 text-white font-bold">Filter</button>
-        <div id="filterOptions" style="display: none;" class="mt-2 border rounded p-2 bg-white">
-            <button onclick="useFilter('nameAsc')">Name A-Z</button><br>
-            <button onclick="useFilter('nameDesc')">Name Z-A</button><br>
-            <button onclick="useFilter('dateOld')">Oldest</button><br>
-            <button onclick="useFilter('dateNew')">Newest</button>
+          <!-- filter -->
+        <div class="filterGroup">
+                <label class="text-gray-300"> Filter:</label>
+                <select id="filterStatus" class="text-white bg-gray-800">
+                    <option value="all" class="bg-gray-700">All</option>
+                    <option value="uncompleted" class="bg-gray-700">Uncompleted</option>
+                    <option value="completed" class="bg-gray-700">Completed</option>
+                </select>
         </div>
-        </section>
 
+        <!-- clear all button -->
+        <button id="removeAllTodo" class="border rounded p-2 bg-red-500 hover:bg-red-800 text-white font-bold border-gray-600">Clear All Todos</button>
+
+        </section>
+        <br> <hr class="text-white">
         <!-- Todo list section -->
          <section class="pt-2">
             <header>
-                <h1 class="text-2x1 font-semibold">List of Todos</h1>
+                <h1 class="listTodos text-white">List of Todos</h1>
             </header>
 
-            <ul class="pt-2" id="todoList">
+            <ul class="pt-2 text-gray-200" id="todoList">
                 <!-- Todo items will be here -->
                  <li>No todos available</li>
             </ul>
@@ -66,7 +65,7 @@
 
     <!-- footer content -->
     <footer>
-        <p class="text-center pt-4">© Ogi's Todo list</p>
+        <p class="text-center pt-4 text-gray-300">© Lintang's Todo list</p>
     </footer>
 
     <!-- JS External -->
